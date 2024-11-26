@@ -1,0 +1,30 @@
+{
+	"dockerFile": "Dockerfile",
+	"build": {
+		"args": {
+			"WORKSPACE": "${containerWorkspaceFolder}"
+		}
+	},
+	"runArgs": ["--privileged", "-v", "/dev/bus/usb:/dev/bus/usb"],
+	"remoteUser": "user",
+	"containerEnv": { "ZEPHYR_BASE": "${containerWorkspaceFolder}/zephyr" },
+	"customizations": {
+		"vscode": {
+			"settings": {
+				"terminal.integrated.profiles.linux": {
+					"bash": {
+						"path": "bash"
+					},
+				},
+				"terminal.integrated.defaultProfile.linux": "bash"
+			},
+			"extensions": [
+				"ms-vscode.cpptools",
+				"ms-vscode.cmake-tools",
+				"cschlosser.doxdocgen",				// Doxygen
+				"psioniq.psi-header",				// Header generator
+				"nordic-semiconductor.nrf-kconfig"	// Kconfig syntax
+			]
+		}
+	}
+}

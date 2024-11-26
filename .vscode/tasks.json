@@ -1,0 +1,35 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Setup Zephyr",
+            "type": "shell",
+            "command": "west init -l manifest-repo",
+            "problemMatcher": []
+        },
+        {
+            "label": "Build Gateway project",
+            "type": "shell",
+            "command": "pwd && sudo west build -p always -b esp32s3_devkitc ReF",
+            "problemMatcher": [],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+        {
+            "label": "Monitor Espressif",
+            "type": "shell",
+            "command": "west espressif monitor -p /dev/ttyACM0",
+            "problemMatcher": []
+        },
+        {
+            "label": "Flash Device",
+            "type": "shell",
+            "command": "sudo west flash --esp-device /dev/ttyACM0",
+            "problemMatcher": []
+        }
+    ]
+}
